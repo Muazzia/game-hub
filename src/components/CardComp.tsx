@@ -1,5 +1,6 @@
 import React from "react";
 import { Game } from "../hooks/useGames";
+import PlatformList from "./PlatformList";
 import {
   Card,
   CardHeader,
@@ -7,6 +8,8 @@ import {
   CardFooter,
   Image,
   Heading,
+  Text,
+  HStack,
 } from "@chakra-ui/react";
 
 interface Props {
@@ -18,7 +21,8 @@ const CardComp = ({ game }: Props) => {
     <Card borderRadius={10} overflow={"hidden"}>
       <Image src={game.background_image} />
       <CardBody>
-        <Heading fontSize={"3xl"}>{game.name}</Heading>
+        <Heading fontSize={"1xl"}>{game.name}</Heading>
+        <PlatformList object={game.parent_platforms.map((e) => e.platform)} />
       </CardBody>
     </Card>
   );

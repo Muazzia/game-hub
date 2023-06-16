@@ -2,11 +2,20 @@ import { CanceledError } from 'axios';
 import { useEffect, useState } from "react";
 import apiClient from "../services/api-Client";
 
+
+export interface Platform{
+ id:number,
+ slug:string;
+}
+
 export interface Game {
-    id: number;
-    name: string;
-    background_image: string;
-  }
+  id: number;
+  name: string;
+  background_image: string;
+  parent_platforms: {platform: Platform}[];
+}
+
+
   
   interface FetchingGame {
     count: number;
@@ -19,6 +28,7 @@ const useGames=()=>{
         const [games, setGames] = useState<Game[]>([]);
         const [err, setErrors] = useState("");
       
+        
         useEffect(() => {
           apiClient
             .get<FetchingGame>("/games")
