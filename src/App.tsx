@@ -2,7 +2,7 @@ import "./App.css";
 import { Button, ButtonGroup, Show } from "@chakra-ui/react";
 import { Grid, GridItem } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
-import ColorChanger from "./components/ColorChanger";
+import GamesGrid from "./components/GamesGrid";
 
 function App() {
   return (
@@ -17,11 +17,10 @@ function App() {
           <NavBar />
         </GridItem>
         <Show above="lg">
-          <GridItem area={"aside"} bg={"yellow"}>
-            Aside
-          </GridItem>
+          <GridItem area={"aside"}>Aside</GridItem>
         </Show>
-        <GridItem area={"main"} bg={"coral"}>
+        <GridItem area={"main"}>
+          <GamesGrid />
           main
         </GridItem>
       </Grid>
