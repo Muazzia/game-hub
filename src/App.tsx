@@ -7,9 +7,12 @@ import GenreList from "./components/GenreList";
 import { useState } from "react";
 import { Genres } from "./hooks/useGenres";
 import MenuListComp from "./components/MenuListComp";
+import { MenuListProp } from "./hooks/useMenuList";
 
 function App() {
   const [selectedGenre, setSelectedGenre] = useState<Genres | null>(null);
+
+  const [selectedMenu, setSelectedMenu] = useState<MenuListProp | null>(null);
   return (
     <>
       <Grid
@@ -31,8 +34,14 @@ function App() {
           </GridItem>
         </Show>
         <GridItem area={"main"}>
-          <MenuListComp />
-          <GamesGrid selectedGenre={selectedGenre} />
+          <MenuListComp
+            selectedPlatform={selectedMenu}
+            onSelect={setSelectedMenu}
+          />
+          <GamesGrid
+            selectedGenre={selectedGenre}
+            selectedPlatform={selectedMenu}
+          />
         </GridItem>
       </Grid>
     </>

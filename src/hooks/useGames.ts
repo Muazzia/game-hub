@@ -1,5 +1,6 @@
 import useData from './useData';
 import { Genres } from './useGenres';
+import { MenuListProp } from './useMenuList';
 
 export interface Platform{
  id:number,
@@ -14,8 +15,10 @@ export interface Game {
   metacritic:number;
 } 
 
-const useGames=(selectedGenre?:Genres | null)=>{
-   return  useData<Game>('/games',{params:{genres:selectedGenre?.id}},[selectedGenre?.id]);
+const useGames=(selectedGenre?:Genres | null,selectedPlatform?:MenuListProp|null)=>{
+   return  useData<Game>('/games',
+   {params:{genres:selectedGenre?.id,parent_platforms:selectedPlatform?.id}},
+   [selectedGenre?.id,selectedPlatform?.id]);
 
 }
 

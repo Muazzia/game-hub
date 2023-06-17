@@ -28,7 +28,7 @@ const useData=<T>(endpoint:string,selectedGenre?:AxiosRequestConfig,deps?:any[])
         ()=>controller.abort();
     },deps ? [...deps ]: [])
 
-    return { data,Error,isloading};
+    return { data,Error,isloading,setErrors,setLoading};
 
 }
 
