@@ -1,7 +1,5 @@
 import { GameQuerry } from '../App';
 import useData from './useData';
-import { Genres } from './useGenres';
-import { MenuListProp } from './useMenuList';
 
 export interface Platform{
  id:number,
@@ -17,11 +15,12 @@ export interface Game {
 } 
 
 const useGames=(gameQuery:GameQuerry)=>{
-   return  useData<Game>('/games',
+   return useData<Game>('/games',
    {
     params:{
     genres:gameQuery.genre?.id,
-    parent_platforms:gameQuery.platform?.id
+    parent_platforms:gameQuery.platform?.id,
+    ordering:gameQuery.sort
       }
     },
    [gameQuery]
