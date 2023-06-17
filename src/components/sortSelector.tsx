@@ -16,7 +16,6 @@ const SortSelector = ({ obj, onSet }: Props) => {
     { value: "Metacritic", path: "-metacritic" },
   ];
 
-  console.log(obj.sort);
   return (
     <Menu>
       <MenuButton as={Button} rightIcon={<BsChevronDown />}>
