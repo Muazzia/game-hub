@@ -18,10 +18,14 @@ export interface Game {
 
 const useGames=(gameQuery:GameQuerry)=>{
    return  useData<Game>('/games',
-   {params:{genres:gameQuery.genre?.id,
+   {
+    params:{
+    genres:gameQuery.genre?.id,
     parent_platforms:gameQuery.platform?.id
-  }},
-   [gameQuery.genre?.id,gameQuery.platform?.id]);
+      }
+    },
+   [gameQuery]
+   );
 
 }
 
