@@ -1,6 +1,4 @@
-import { useEffect } from 'react';
-import { useState } from 'react';
-import apiClient from '../services/api-Client';
+import useData from './useData';
 
 interface Genres{
     id:number;
@@ -8,20 +6,7 @@ interface Genres{
 }
 
 const useGenres=()=>{
-    const [genres,setGenres]=useState<Genres[]>([]);
-    const [Error,setErrors]=useState('');
-
-    useEffect(()=>{
-        const controller=new AbortController();
-        apiClient.get('/genres',{signal:controller.signal})
-        .then((res)=>setGenres(res.data.results))
-        .catch(err=>setErrors(err.message));
-
-        ()=>controller.abort();
-    })
-
-    return {genres,Error};
-
+    return useData<Genres>('/genres');
 }
 
 export default useGenres;
