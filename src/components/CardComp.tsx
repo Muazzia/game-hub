@@ -11,6 +11,7 @@ import {
   Text,
   HStack,
 } from "@chakra-ui/react";
+import Critic from "./Critic";
 
 interface Props {
   game: Game;
@@ -22,7 +23,10 @@ const CardComp = ({ game }: Props) => {
       <Image src={game.background_image} />
       <CardBody>
         <Heading fontSize={"1xl"}>{game.name}</Heading>
-        <PlatformList object={game.parent_platforms.map((e) => e.platform)} />
+        <HStack justifyContent={"space-between"}>
+          <PlatformList object={game.parent_platforms.map((e) => e.platform)} />
+          <Critic score={game.metacritic} />
+        </HStack>
       </CardBody>
     </Card>
   );
