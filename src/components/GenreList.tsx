@@ -13,10 +13,11 @@ import CropUrl from "../services/Image-Url";
 import { Genres } from "../hooks/useGenres";
 
 interface Props {
+  selected: Genres | null;
   onSelect: (genre: Genres) => void;
 }
 
-const GenreList = ({ onSelect }: Props) => {
+const GenreList = ({ selected, onSelect }: Props) => {
   const { data, isloading, Error } = useGenres();
 
   if (Error) return null;
@@ -31,7 +32,13 @@ const GenreList = ({ onSelect }: Props) => {
               src={CropUrl(val.image_background)}
               borderRadius={4}
             />
-            <Button onClick={() => onSelect(val)} variant={"link"}>
+            <Button
+              onClick={() => onSelect(val)}
+              variant={"link"}
+              colorScheme={
+                selected ? (selected === val ? "blue" : "white") : "white"
+              }
+            >
               {val.name}
             </Button>
           </HStack>
