@@ -1,17 +1,8 @@
-import React from "react";
 import { Game } from "../hooks/useGames";
 import PlatformList from "./PlatformList";
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  CardFooter,
-  Image,
-  Heading,
-  Text,
-  HStack,
-} from "@chakra-ui/react";
+import { Card, CardBody, Image, Heading, HStack } from "@chakra-ui/react";
 import Critic from "./Critic";
+import CropUrl from "../services/Image-Url";
 
 interface Props {
   game: Game;
@@ -20,7 +11,7 @@ interface Props {
 const CardComp = ({ game }: Props) => {
   return (
     <Card borderRadius={10} overflow={"hidden"}>
-      <Image src={game.background_image} />
+      <Image src={CropUrl(game.background_image)} />
       <CardBody>
         <Heading fontSize={"1xl"}>{game.name}</Heading>
         <HStack justifyContent={"space-between"}>
