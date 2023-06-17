@@ -9,10 +9,13 @@ import { Genres } from "./hooks/useGenres";
 import MenuListComp from "./components/MenuListComp";
 import { MenuListProp } from "./hooks/useMenuList";
 
-function App() {
-  const [selectedGenre, setSelectedGenre] = useState<Genres | null>(null);
+export interface GameQuerry {
+  genre: Genres | null;
+  platform: MenuListProp | null;
+}
 
-  const [selectedMenu, setSelectedMenu] = useState<MenuListProp | null>(null);
+function App() {
+  const [gameQuery, setGameQuery] = useState<GameQuerry>({} as GameQuerry);
   return (
     <>
       <Grid
@@ -30,18 +33,18 @@ function App() {
         </GridItem>
         <Show above="lg">
           <GridItem area={"aside"} paddingX={5}>
-            <GenreList selected={selectedGenre} onSelect={setSelectedGenre} />
+            <GenreList
+              selected={gameQuery.genre}
+              onSelect={(genre) => setGameQuery({ ...gameQuery, genre })}
+            />
           </GridItem>
         </Show>
         <GridItem area={"main"}>
           <MenuListComp
-            selectedPlatform={selectedMenu}
-            onSelect={setSelectedMenu}
+            selectedPlatform={gameQuery.platform}
+            onSelect={(platform) => setGameQuery({ ...gameQuery, platform })}
           />
-          <GamesGrid
-            selectedGenre={selectedGenre}
-            selectedPlatform={selectedMenu}
-          />
+          <GamesGrid gameQuery={gameQuery} />
         </GridItem>
       </Grid>
     </>

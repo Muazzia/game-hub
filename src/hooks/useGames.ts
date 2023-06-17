@@ -1,3 +1,4 @@
+import { GameQuerry } from '../App';
 import useData from './useData';
 import { Genres } from './useGenres';
 import { MenuListProp } from './useMenuList';
@@ -15,10 +16,12 @@ export interface Game {
   metacritic:number;
 } 
 
-const useGames=(selectedGenre?:Genres | null,selectedPlatform?:MenuListProp|null)=>{
+const useGames=(gameQuery:GameQuerry)=>{
    return  useData<Game>('/games',
-   {params:{genres:selectedGenre?.id,parent_platforms:selectedPlatform?.id}},
-   [selectedGenre?.id,selectedPlatform?.id]);
+   {params:{genres:gameQuery.genre?.id,
+    parent_platforms:gameQuery.platform?.id
+  }},
+   [gameQuery.genre?.id,gameQuery.platform?.id]);
 
 }
 
