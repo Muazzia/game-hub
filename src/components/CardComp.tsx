@@ -13,11 +13,11 @@ const CardComp = ({ game }: Props) => {
     <Card>
       <Image src={CropUrl(game.background_image)} />
       <CardBody>
-        <Heading fontSize={"1xl"}>{game.name}</Heading>
-        <HStack justifyContent={"space-between"}>
+        <HStack justifyContent={"space-between"} marginBottom={2}>
           <PlatformList object={game.parent_platforms.map((e) => e.platform)} />
           <Critic score={game.metacritic} />
         </HStack>
+        <Heading fontSize={"xl"}>{game.name}</Heading>
       </CardBody>
     </Card>
   );
