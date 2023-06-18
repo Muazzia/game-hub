@@ -1,8 +1,14 @@
-import { Box, HStack, Image, useBreakpointValue } from "@chakra-ui/react";
+import {
+  Box,
+  HStack,
+  Image,
+  useBreakpointValue,
+  Button,
+} from "@chakra-ui/react";
 import logo from "../assets/webpack.svg";
 import ColorChanger from "./ColorChanger";
 import Search from "./Search";
-import ButtonForCard from "./buttonforCard";
+import { useState } from "react";
 
 export interface SearchProps {
   setSearch: (search: string) => void;
@@ -14,6 +20,8 @@ const NavBar = ({ setSearch }: SearchProps) => {
     base: true,
   });
 
+  const [isClicked, setIsClicked] = useState(false);
+
   if (isSmallScreen) {
     // Render small screen version
     return (
@@ -21,10 +29,15 @@ const NavBar = ({ setSearch }: SearchProps) => {
         <HStack justifyContent={"space-between"} padding={"10px 20px"}>
           <Image src={logo} boxSize={"60px"} />
           <HStack>
-            <ButtonForCard onClick={setSearch} />
+            <Button onClick={() => setIsClicked(!isClicked)} variant="link">
+              Search
+            </Button>
             <ColorChanger />
           </HStack>
         </HStack>
+        <Box marginX={5} marginY={3}>
+          {isClicked && <Search onSearch={setSearch} />}
+        </Box>
       </>
     );
   }

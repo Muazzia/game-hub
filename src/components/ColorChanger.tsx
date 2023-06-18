@@ -1,11 +1,12 @@
 import { HStack, Switch, Text, useColorMode } from "@chakra-ui/react";
+import { MdOutlineDarkMode } from "react-icons/md";
 
 const ColorChanger = () => {
   const { toggleColorMode, colorMode } = useColorMode();
   return (
     <HStack>
       <Switch isChecked={colorMode === "dark"} onChange={toggleColorMode} />
-      <Text>DarkMode</Text>
+      <MdOutlineDarkMode size={"32px"} />
     </HStack>
   );
 };
