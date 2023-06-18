@@ -13,7 +13,7 @@ const Emoji = ({ number }: Props) => {
     3: { val: <BiMeh /> },
   };
 
-  return map[number].val;
+  return map[number].val || "";
 };
 
 export default Emoji;
