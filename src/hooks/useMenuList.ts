@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import useData from './useData';
+import menuList from '../data/meuList';
 
 export interface MenuListProp{
     id:number;
@@ -8,7 +9,9 @@ export interface MenuListProp{
 }
 
 const useMenuList=()=>{
-    return useData<MenuListProp>('/platforms/lists/parents')
+    return {data:menuList,isloading:false,Error:null};
+
+    // return useData<MenuListProp>('/platforms/lists/parents');
 }
 
 export default useMenuList;
