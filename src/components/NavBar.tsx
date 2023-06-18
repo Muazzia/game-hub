@@ -1,4 +1,4 @@
-import { HStack, Image, PropsOf, Text } from "@chakra-ui/react";
+import { HStack, Image } from "@chakra-ui/react";
 import logo from "../assets/webpack.svg";
 import ColorChanger from "./ColorChanger";
 import Search from "./Search";
