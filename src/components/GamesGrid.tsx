@@ -18,6 +18,7 @@ const GamesGrid = ({ gameQuery }: Props) => {
     <SimpleGrid
       columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
       spacing={2}
+      // spacingY={5}
       padding={"10px"}
     >
       {isloading &&
