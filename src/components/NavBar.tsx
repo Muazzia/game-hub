@@ -27,7 +27,7 @@ const NavBar = ({ setSearch }: SearchProps) => {
     return (
       <>
         <HStack justifyContent={"space-between"} padding={"10px 20px"}>
-          <Image src={logo} boxSize={"60px"} />
+          <Image src={logo} boxSize={"59px"} />
           <HStack>
             <Button onClick={() => setIsClicked(!isClicked)} variant="link">
               Search
